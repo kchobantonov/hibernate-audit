@@ -1,0 +1,1 @@
+The project provides extensions to Hibernate to provide complete auditing capabilities. It uses a set of tables in the DB that do not depend on the object model
