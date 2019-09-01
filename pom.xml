@@ -61,40 +61,6 @@
 		</developer>
 	</developers>
 
-	<repositories>
-		<repository>
-			<id>central</id>
-			<name>Maven Repository Switchboard</name>
-			<layout>default</layout>
-			<url>http://repo1.maven.org/maven2</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>jboss</id>
-			<layout>default</layout>
-			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/
-			</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>audit-third-party</id>
-			<name>audit-third-party</name>
-			<url>http://hibernate-audit.googlecode.com/svn/repository/third-party
-			</url>
-		</repository>
-	</repositories>
-
 	<build>
 		<resources>
 			<resource>
@@ -167,6 +133,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -199,6 +166,7 @@
 					</archive>
 				</configuration>
 			</plugin>
+			-->
 		</plugins>
 
 		<pluginManagement>
