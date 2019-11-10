@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<version>2.0.3-SNAPSHOT</version>
@@ -48,9 +50,10 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:svn:https://hibernate-audit.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://hibernate-audit.googlecode.com/svn/trunk</developerConnection>
-		<url>https://hibernate-audit.googlecode.com/</url>
+		<connection>scm:git:https://github.com/kchobantonov/hibernate-audit</connection>
+		<developerConnection>scm:git:https://github.com/kchobantonov/hibernate-audit</developerConnection>
+		<url>https://github.com/kchobantonov/hibernate-audit</url>
+		<tag>HEAD</tag>
 	</scm>
 
 	<developers>
@@ -82,16 +85,6 @@
 		</testResources>
 
 		<plugins>
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.0-beta-7</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<tagBase>
-						https://hibernate-audit.googlecode.com/svn/tags/
-					</tagBase>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -127,17 +120,18 @@
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>oracle</groupId>
-						<artifactId>classes12</artifactId>
-						<version>10.2.0.2.0</version>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>1.4.194</version>
 					</dependency>
+					<!-- <dependency> <groupId>oracle</groupId> <artifactId>classes12</artifactId> 
+						<version>10.2.0.2.0</version> </dependency> -->
 				</dependencies>
 			</plugin>
-			<!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.0-beta-1</version>
+				<version>1.4</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -166,7 +160,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			-->
 		</plugins>
 
 		<pluginManagement>
@@ -175,15 +168,6 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>hibernate3-maven-plugin</artifactId>
 					<version>3.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.7</version>
-					<configuration>
-						<downloadSources>true</downloadSources>
-						<downloadJavadocs>true</downloadJavadocs>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -201,26 +185,8 @@
 						<target>1.5</target>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>2.0.4</version>
-				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh-external</artifactId>
-				<version>1.0-alpha-5</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-scm</artifactId>
-				<version>1.0-beta-4</version>
-			</extension>
-		</extensions>
 
 	</build>
 
@@ -298,9 +264,11 @@
 			<classifier>jdk15</classifier>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency> <groupId>oracle</groupId> <artifactId>classes12</artifactId> 
+			</dependency> -->
 		<dependency>
-			<groupId>oracle</groupId>
-			<artifactId>classes12</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -397,11 +365,13 @@
 				<version>5.7</version>
 				<classifier>jdk15</classifier>
 			</dependency>
+			<!-- <dependency> <groupId>oracle</groupId> <artifactId>classes12</artifactId> 
+				<version>10.2.0.2.0</version> <scope>provided</scope> </dependency> -->
 			<dependency>
-				<groupId>oracle</groupId>
-				<artifactId>classes12</artifactId>
-				<version>10.2.0.2.0</version>
-				<scope>provided</scope>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.194</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>log4j</groupId>
@@ -498,11 +468,11 @@
 	<properties>
 		<!-- The 'main' persistence unit definition, used to persist test data 
 			and optionally audit data. -->
-		<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
-		<hibernate.connection.driver_class>oracle.jdbc.driver.OracleDriver</hibernate.connection.driver_class>
-		<hibernate.connection.url>jdbc:oracle:thin:@localhost:1521:XE</hibernate.connection.url>
-		<hibernate.connection.username>hba</hibernate.connection.username>
-		<hibernate.connection.password>hba</hibernate.connection.password>
+		<hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
+		<hibernate.connection.driver_class>org.h2.Driver</hibernate.connection.driver_class>
+		<hibernate.connection.url>jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1</hibernate.connection.url>
+		<hibernate.connection.username>sa</hibernate.connection.username>
+		<hibernate.connection.password>sa</hibernate.connection.password>
 
 		<hibernate.jdbc.batch_size>10</hibernate.jdbc.batch_size>
 		<hibernate.cache.provider_class>org.hibernate.cache.EhCacheProvider</hibernate.cache.provider_class>
