@@ -122,7 +122,7 @@
 					<dependency>
 						<groupId>com.h2database</groupId>
 						<artifactId>h2</artifactId>
-						<version>1.4.194</version>
+						<version>2.0.206</version>
 					</dependency>
 					<!-- <dependency> <groupId>oracle</groupId> <artifactId>classes12</artifactId> 
 						<version>10.2.0.2.0</version> </dependency> -->
@@ -370,7 +370,7 @@
 			<dependency>
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
-				<version>1.4.194</version>
+				<version>2.0.206</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
