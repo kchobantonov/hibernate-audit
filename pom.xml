@@ -484,7 +484,7 @@
 
 		<emf.version>2.9.1-v20130827-0309</emf.version>
 		<teneo.version>2.0.1-v201310012125</teneo.version>
-		<hibernate.version>4.3.0.CR2</hibernate.version>
+		<hibernate.version>5.3.20.Final</hibernate.version>
 		<hibernate.show_sql>true</hibernate.show_sql>
 		<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto> <!-- update -->
 	</properties>
